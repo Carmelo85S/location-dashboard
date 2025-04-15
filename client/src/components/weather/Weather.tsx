@@ -5,7 +5,6 @@ import {
   WeatherForecastDay,
   WeatherTodayResponse,
 } from "../../types/weather";
-import "./Weather.css";
 import { useAddressStore } from "../../store/store";
 
 const WeatherComponent = () => {
@@ -72,71 +71,72 @@ const WeatherComponent = () => {
     new Date(timeInMillis * 1000).toLocaleTimeString();
 
   return (
-    <div className="weather-container">
+    <div className="bg-foreground w-full p-6 rounded-lg shadow-lg">
       {currentWeather && (
         <div>
-          <div className="current-weather">
-            <h2>
+          <div className="mb-6 flex justify-between mx-auto items-center sm:flex-col rounded-lg">
+            {/* Località */}
+            <h2 className="text-xl font-semibold text-text whitespace-nowrap">
               {currentWeather.name}, {currentWeather.sys.country}
-              <p className="time">{getCurrentTime(currentWeather.dt)}</p>
             </h2>
-            <div className="temp">
+
+            {/* Ora attuale */}
+            <p className="text-sm text-text whitespace-nowrap">
+              {getCurrentTime(currentWeather.dt)}
+            </p>
+
+            {/* Meteo attuale */}
+            <div className="flex items-center rounded-lg gap-3">
               <img
                 src={`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`}
                 alt="Weather Icon"
+                className="w-11 h-11 md:w-14 md:h-14"
               />
-              <p>{currentWeather.main.temp}°C</p>
+              <p className="text-3xl font-bold text-text">
+                {currentWeather.main.temp}°C
+              </p>
             </div>
           </div>
-
-          <table className="table-auto">
-            <thead>
-              <tr className="bg-gray-500">
-                <th className="w-1/4 px-2 py-2">Day</th>
-                <th className="w-1/4 px-2 py-2 text-center">Temp &#8451;</th>
-                <th className="w-1/4 px-2 py-2 text-center">Humidity</th>
-                <th className="w-1/4 px-2 py-2 text-center">Weather</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loading && (
+            <table className="w-full text-sm bg-foreground text-text">
+              <thead className="bg-foreground">
                 <tr>
-                  <td colSpan={4}>
-                    (
-                    <div className="spinner-container">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-                    </div>
-                    )
-                  </td>
+                  <th className="px-4 py-2 text-left">Day</th>
+                  <th className="px-4 py-2 text-center">Temp (°C)</th>
+                  <th className="px-4 py-2 text-center">Humidity</th>
+                  <th className="px-4 py-2 text-center">Icon</th>
                 </tr>
-              )}
-              {error && (
-                <tr>
-                  <td colSpan={4}>
-                    <div className="error-message-container">{error}</div>
-                  </td>
-                </tr>
-              )}
-
-              {weatherData.map((weather, index) => (
-                <tr key={index} className="odd:bg-gray-100 even:bg-gray-200">
-                  <td className="w-1/4 px-2 py-2">{weather.day}</td>
-                  <td className="w-1/4 px-2 py-2 text-center">
-                    {weather.temperature}
-                  </td>
-                  <td className="w-1/4 px-2 py-2 text-center">
-                    {weather.humidity}
-                  </td>
-                  <td className="w-1/4 px-2 py-2 text-center">
-                    <img
-                      src={`http://openweathermap.org/img/w/${weather.icon}.png`}
-                      alt="Weather Icon"
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan={4} className="text-center py-4">
+                      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500 mx-auto"></div>
+                    </td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan={4} className="text-center py-4 text-red-500">
+                      {error}
+                    </td>
+                  </tr>
+                ) : (
+                  weatherData.map((weather, index) => (
+                    <tr key={index} className="odd:bg-gray-50 even:bg-foreground hover:bg-gray-200 transition">
+                      <td className="px-4 py-2">{weather.day}</td>
+                      <td className="px-4 py-2 text-center">{weather.temperature}°C</td>
+                      <td className="px-4 py-2 text-center">{weather.humidity}%</td>
+                      <td className="px-4 py-2 text-center">
+                        <img
+                          src={`http://openweathermap.org/img/w/${weather.icon}.png`}
+                          alt="Weather Icon"
+                          className="w-6 h-6 mx-auto"
+                        />
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
         </div>
       )}
     </div>

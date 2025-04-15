@@ -121,8 +121,8 @@ const AddressInput = () => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center justify-center m-auto p-6 bg-background rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-text mb-4">Local Travel & Weather Dashboard</h2>
+    <section className="w-full flex flex-col items-center justify-center m-auto p-6 bg-foreground rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold text-text mb-4">Trafik live</h2>
   
       <section className="flex flex-col lg:flex-row items-baseline w-full max-w-[500px] justify-between gap-4 sm:w-full">
         <input
@@ -132,14 +132,15 @@ const AddressInput = () => {
           onChange={(e) => setAddress(e.target.value)}
           className="w-full lg:w-3/5 p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button
+      <button
           onClick={fetchCoordinates}
           disabled={loading}
-          className={`w-full lg:w-auto px-9 py-3 rounded-lg text-white font-semibold ${
-            loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+          className={`w-full lg:w-auto px-9 py-3 rounded-lg text-text hover:text-white font-semibold border border-border ${
+            loading ? "bg-foreground" : "bg-button-default hover:bg-button-hover active:bg-button-active"
           }`}
         >
-          {loading ? "Loading..." : "SEARCH"}
+
+          {loading ? "Laddar..." : "SÖK"}
         </button>
       </section>
   

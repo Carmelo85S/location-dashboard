@@ -17,13 +17,15 @@ const SelectedCoordinates = () => {
   const displayAddress = selectedAddress || defaultAddress;
 
   return (
-    <section className="flex flex-col items-center p-6 bg-background">
-      <div className="m-auto w-full text-center p-4 rounded-lg">
-        <h3 className="text-lg font-semibold">Selected Address:</h3>
+    <section className="flex justify-center items-center flex-col bg-background">
+      <div className="mx-auto w-3/4 text-center p-2 rounded-lg">
+        <h3 className="text-lg font-semibold">Adress:</h3>
         <p className="text-sm">{formatAddress(displayAddress)}</p>
-        <h4 className="text-lg font-semibold mt-2">Coordinates:</h4>
-        <p className="text-sm">Latitude: {displayCoordinates.lat}</p>
-        <p className="text-sm">Longitude: {displayCoordinates.lon}</p>
+      </div>
+      <div className="flex flex-col justify-center items-center mx-auto w-3/4 text-center rounded-lg">
+        <h4 className="text-lg font-semibold mt-2">Koordinater:</h4>
+        <p className="text-sm">Latitud: {displayCoordinates.lat}</p>
+        <p className="text-sm">Longitud: {displayCoordinates.lon}</p>
       </div>
     </section>
   );

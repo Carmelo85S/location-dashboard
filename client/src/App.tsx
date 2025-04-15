@@ -1,10 +1,9 @@
 import AddressInput from "./components/AddressInput";
-import TransportDeparture from "./components/departure/TransportDeparture";
 import "./index.css";
-import WeatherComponent from "./components/weather/Weather";
 import MapTraffic from "./components/traffic/MapTraffic";
 import "./index.css";
 import ErrorBoundary from "./components/error/ErrorBoudary";
+import WheatherDeparture from "./components/weatherDeparture/WheatherDeparture";
 
 const App = () => {
   return (
@@ -13,8 +12,7 @@ const App = () => {
           <ErrorBoundary>
             <AddressInput />
           </ErrorBoundary>
-          <TransportDeparture />
-          <WeatherComponent />
+          <WheatherDeparture />
           <MapTraffic />
         </div>
     </>

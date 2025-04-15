@@ -96,9 +96,9 @@ const Traffic: React.FC = () => {
   }
 
   return (
-    <section className="flex justify-center items-center flex-col h-auto px-6 pb-4 bg-background">
+    <section className="flex justify-center items-center flex-col xs:w-full h-auto px-6 pb-4 bg-background">
       <section className="mb-4">
-        <Heading label="TRAFFIC UPDATES" />
+        <Heading label="TRAFIKUPPDATERINGAR" />
       </section>
   
       <section className="bg-foreground flex justify-between items-center p-6 rounded-lg w-full min-h-[300px] h-auto flex-col lg:flex-row sm:flex-col xs:flex-col">
@@ -108,29 +108,29 @@ const Traffic: React.FC = () => {
               {data.Id}
             </p>
             <section className="flex justify-between items-center flex-wrap w-full py-4 px-4 rounded-md bg-background">
-              <p className="text-text">
+              {/*<p className="text-text">
                 <strong>Country Code: </strong>
                    {data.CountryCode}
-              </p>
+              </p>*/}
               <p className="text-text">
-                <strong>Publication Time: </strong>
+                <strong>Publiceringstid: </strong>
                    {formatDate(data.PublicationTime)}
               </p>
             </section>
   
             <section className="flex flex-col justify-center items-center w-full">
               <p className="text-text w-full py-3 sm:w-5/6 text-justify break-words">
-                <strong>Description: </strong>
+                <strong>Beskrivning: </strong>
                    {data.Description}
               </p>
               <p className="text-text w-full py-3 sm:w-5/6 text-justify break-words">
-                <strong>Message: </strong>
+                <strong>Meddelande: </strong>
                    {data.Message}
               </p>
             </section>
           </section>
         ) : (
-          <p className="text-secondary">No traffic data found.</p>
+          <p className="text-secondary">Inga trafikdata hittades.</p>
         )}
         <Map/>
       </section>
