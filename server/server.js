@@ -27,10 +27,6 @@ const API_URL_SITUATION = process.env.TRAFIKVERKET_API_URL_SITUATION;
 const AUTH_KEY_SITUATION = process.env.TRAFIKVERKET_API_KEY_SITUATION;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
-//Trasport
-const AUTH_KEY = process.env.TRAFIKVERKET_API_KEY;
-const API_URL = process.env.TRAFIKVERKET_API_URL;
-
 app.get("/fetchDataTrafficSituation", (req, res) => {
   const { lat, lon } = req.query;
 
