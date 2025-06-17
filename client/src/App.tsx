@@ -3,7 +3,7 @@ import "./index.css";
 import MapTraffic from "./components/traffic/MapTraffic";
 import "./index.css";
 import ErrorBoundary from "./components/error/ErrorBoudary";
-import WheatherDeparture from "./components/weatherDeparture/WheatherDeparture";
+import Weather from "./components/weather/Weather";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
           <ErrorBoundary>
             <AddressInput />
           </ErrorBoundary>
-          <WheatherDeparture />
+          <Weather />
           <MapTraffic />
         </div>
     </>

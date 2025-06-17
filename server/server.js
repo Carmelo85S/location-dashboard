@@ -12,7 +12,7 @@ require("dotenv").config();
 
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://localhost:5174",
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
@@ -146,14 +146,6 @@ app.get("/geocode", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
-app.get("nearestStation", async (req, res) => {
-  const { lat, lon } = req.query;
-
-  if (!lat || !lon) {
-    return res.status(400).json({ error: "Missing coordinates" });
-  }
-})
 
 app.listen(8080, () => {
   console.log("server running on port 8080");
